@@ -200,9 +200,23 @@ view: production {
     drill_fields: [detail*]
   }
 
-  measure: total_production {
+  measure: paid_amounts {
     type: sum_distinct
     sql: ${paid_amount} ;;
+    sql_distinct_key: ${fact_transaction_id} ;;
+    drill_fields: [detail*]
+  }
+
+  measure: charge_amounts  {
+    type: sum_distinct
+    sql: ${charge_amount} ;;
+    sql_distinct_key: ${fact_transaction_id} ;;
+    drill_fields: [detail*]
+  }
+
+  measure: adjustment_amounts  {
+    type: sum_distinct
+    sql: ${adjustment_amount} ;;
     sql_distinct_key: ${fact_transaction_id} ;;
     drill_fields: [detail*]
   }
