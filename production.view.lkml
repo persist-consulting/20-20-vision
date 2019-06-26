@@ -220,6 +220,12 @@ view: production {
     sql_distinct_key: ${fact_transaction_id} ;;
     drill_fields: [detail*]
   }
+  measure: transaction_amounts  {
+    type: sum_distinct
+    sql: ${transaction_amount} ;;
+    sql_distinct_key: ${fact_transaction_id} ;;
+    drill_fields: [detail*]
+  }
 
 
   set: detail {
